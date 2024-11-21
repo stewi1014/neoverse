@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "neoverse",
+  "name": "Neoverse",
+  "version": "${neoverse_version}",
+  "licence": "AGPL3",
+  "description": "Adds multiple dimensions to minecraft",
+  "entrypoints": {
+    "main": [
+      "link.lenqua.neoverse.fabric.FabricMain"
+    ]
+  }
+}

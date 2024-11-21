@@ -1,0 +1,23 @@
+plugins {
+    id "java"
+    id "net.neoforged.moddev" version "1.0.21"
+}
+
+apply plugin: "java"
+
+neoForge {
+    version = project.neo_version
+    runs { server { server() } }
+}
+
+dependencies {
+    implementation project(":common")
+}
+
+processResources {
+    var replace = [neoverse_version    : project.neoverse_version,
+                   loader_version_range: project.neo_loader_version]
+
+    inputs.properties replace
+    expand replace
+}

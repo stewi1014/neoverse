@@ -1,0 +1,9 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="AGPL3"
+
+[[mods]]
+    modId="neoverse"
+    version="${neoverse_version}"
+    displayName="Neoverse"
+    description='''Adds multiple dimensions to minecraft'''
