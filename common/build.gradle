@@ -1,5 +1,18 @@
 plugins {
-    id "java"
+    id "fabric-loom"
 }
 
-apply plugin: "java"
+loom { minecraft_version = project.minecraft_version }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+}
+
+jar {
+    manifest {
+        attributes([
+                FMLModType: "GAMELIBRARY"
+        ])
+    }
+}

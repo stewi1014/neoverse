@@ -2,17 +2,19 @@ package link.lenqua.neoverse.neoforge;
 
 import link.lenqua.neoverse.Main;
 
-import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import org.slf4j.Logger;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 
 @Mod("neoverse")
 public class NeoForgeMain extends Main {
-    private static final Logger log = LogUtils.getLogger();
-
     public NeoForgeMain(IEventBus modEventBus, ModContainer container) {
-        log.info("Hello NeoForge World");
+        NeoForge.EVENT_BUS.addListener((ServerStartedEvent event) -> onServerStarted(event.getServer()));
+        NeoForge.EVENT_BUS.addListener((ServerStartingEvent event) -> onServerStarting(event.getServer()));
+        NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> onServerStop(event.getServer()));
     }
 }

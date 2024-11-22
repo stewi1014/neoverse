@@ -1,17 +1,23 @@
 plugins {
-    id "java"
-    id "net.neoforged.moddev" version "1.0.21"
+    id "java-library"
+    id "net.neoforged.moddev"
 }
-
-apply plugin: "java"
 
 neoForge {
     version = project.neo_version
-    runs { server { server() } }
+    runs { server {
+        server()
+        programArguments = ["-nogui"]
+    } }
+    parchment {
+        minecraftVersion = project.parchment_minecraft
+        mappingsVersion = project.parchment_version
+    }
 }
 
 dependencies {
     implementation project(":common")
+    jarJar project(":common")
 }
 
 processResources {

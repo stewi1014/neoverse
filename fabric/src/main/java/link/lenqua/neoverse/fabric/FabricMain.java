@@ -3,14 +3,14 @@ package link.lenqua.neoverse.fabric;
 import link.lenqua.neoverse.Main;
 
 import net.fabricmc.api.ModInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 
 public class FabricMain extends Main implements ModInitializer {
-    private static final Logger log = LoggerFactory.getLogger("neoverse");
-
     @Override
     public void onInitialize() {
-        log.info("Hello Fabric World");
+        ServerLifecycleEvents.SERVER_STARTING.register(this::onServerStarting);
+        ServerLifecycleEvents.SERVER_STARTED.register(this::onServerStarted);
+        ServerLifecycleEvents.SERVER_STOPPING.register(this::onServerStopping);
+        ServerLifecycleEvents.SERVER_STOPPED.register(this::onServerStop);
     }
 }
